@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken'
     'myapp',
+    'student',
+    'employee',
 ]
 
 MIDDLEWARE = [
@@ -77,8 +80,11 @@ WSGI_APPLICATION = 'Dsert.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+
+
     }
+
 }
 
 REST_FRAMEWORK = {
@@ -128,9 +134,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'store_image')
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ]
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.IsAuthenticated',
+   ),
 }
 
 django_heroku.settings(locals())

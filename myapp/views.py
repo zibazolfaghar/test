@@ -3,13 +3,13 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from .models import book
 from .serializers import bookmodelserializer, bookserializer
-from rest_framework.decorators import api_view,permission_classes
+from rest_framework.decorators import api_view, permission_classes
 
 
 class getalldata(APIView):
     def get(self, request):
         query = book.objects.all().order_by('-create_at')
-        serializers = bookmodelserializer(query, many=True,context={'request':request})
+        serializers = bookmodelserializer(query, many=True, context={'request': request})
         return Response(serializers.data, status=status.HTTP_200_OK)
 
 
@@ -22,7 +22,8 @@ def allApi(request):
 
 
 class getfavdata(APIView):
-    permission_classes=[permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request):
         query = book.objects.filter(fav=True)
         serializers = bookmodelserializer(query, many=True)
@@ -110,3 +111,28 @@ class deletedata(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def calc(request):
+    try:
+        num1 = request.data["num1"]
+        num2 = request.data["num2"]
+        operator = request.data["operator"]
+    except:
+        return Response({"error": "send num1 and num2 and operator"}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        if isinstance(num1, int) and isinstance(num2, int):
+            if operator == "add":
+                return Response({"result": num1 + num2}, status=status.HTTP_200_OK)
+            elif operator == "sub":
+                return Response({"result": num1 - num2}, status=status.HTTP_200_OK)
+            elif operator == "div":
+                return Response({"result": num1 / num2}, status=status.HTTP_200_OK)
+            elif operator == "mul":
+                return Response({"result": num1 * num2}, status=status.HTTP_200_OK)
+            else:
+                return Response({"error": "send integers values"}, status=status.HTTP_400_BAD_REQUEST)
+            pass
+        else:
+            return Response({"error": "send integer values"}, status=status.HTTP_400_BAD_REQUEST)

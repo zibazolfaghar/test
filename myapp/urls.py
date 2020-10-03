@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from .views import getalldata, getfavdata, updatefavdata,\
-    postmodeldata,postdata,searchdata,deletedata,allApi,setdata
+    postmodeldata,postdata,searchdata,deletedata,allApi,setdata,calc
 
 urlpatterns = [
     path('all_data/', allApi),
@@ -13,4 +13,5 @@ urlpatterns = [
     path('set_data/', setdata),
     path('search/', searchdata.as_view()),
     path('delete/<int:pk>/', deletedata.as_view()),
+    path('cal/', calc),
 ]
