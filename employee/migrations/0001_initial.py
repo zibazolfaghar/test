@@ -22,6 +22,6 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(blank=True, null=True)),
                 ('updated_at', models.DateTimeField(blank=True, null=True)),
             ],
-            //lk
+  
         ),
     ]
