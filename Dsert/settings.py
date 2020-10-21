@@ -82,6 +82,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3'
 
+    },
+    'anbar99': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'anbar99',
+        'USER':'sa',
+        'PASSWORD':'@Sql_Kg_12*'
 
     }
 
@@ -132,15 +138,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'store_image')
 
-
 REST_FRAMEWORK = {
-   'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework.authentication.TokenAuthentication',
-   ),
-   'DEFAULT_PERMISSION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.IsAuthenticated',
-   ),
+    ),
 }
 
 django_heroku.settings(locals())

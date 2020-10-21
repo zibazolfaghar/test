@@ -27,5 +27,11 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="User Data Source [3] -" uuid="daa5e3e8-2b27-47b0-8b90-907f9ae6f51b">
+      <driver-ref>524de9ac-03dd-4272-bc26-ade3375ab2e8</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>java.sql.Driver</jdbc-driver>
+    </data-source>
   </component>
 </project>

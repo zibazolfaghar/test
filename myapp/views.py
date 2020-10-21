@@ -13,6 +13,7 @@ class getalldata(APIView):
         return Response(serializers.data, status=status.HTTP_200_OK)
 
 
+
 @api_view(['GET'])
 def allApi(request):
     if request.method == 'GET':
