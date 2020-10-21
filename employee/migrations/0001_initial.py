@@ -20,7 +20,8 @@ class Migration(migrations.Migration):
                 ('salary', models.IntegerField()),
                 ('post', models.CharField(max_length=150)),
                 ('created_at', models.DateTimeField(blank=True, null=True)),
-                ('updated_at', models.DateTimeField(blank=True, null=True)),
+                # /kjjkkk
+
             ],
   
         ),
